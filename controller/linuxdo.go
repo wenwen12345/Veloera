@@ -79,7 +79,10 @@ func getLinuxdoUserInfoByCode(code string, c *gin.Context) (*LinuxdoUser, error)
 	}
 
 	// Get access token using Basic auth
-	tokenEndpoint := "https://connect.linux.do/oauth2/token"
+	tokenEndpoint := common.LinuxDOTokenEndpoint
+	if tokenEndpoint == "" {
+		tokenEndpoint = common.LinuxDOBaseURL + "/oauth2/token"
+	}
 	credentials := common.LinuxDOClientId + ":" + common.LinuxDOClientSecret
 	basicAuth := "Basic " + base64.StdEncoding.EncodeToString([]byte(credentials))
 
@@ -124,7 +127,10 @@ func getLinuxdoUserInfoByCode(code string, c *gin.Context) (*LinuxdoUser, error)
 	}
 
 	// Get user info
-	userEndpoint := "https://connect.linux.do/api/user"
+	userEndpoint := common.LinuxDOUserEndpoint
+	if userEndpoint == "" {
+		userEndpoint = common.LinuxDOBaseURL + "/api/user"
+	}
 	req, err = http.NewRequest("GET", userEndpoint, nil)
 	if err != nil {
 		return nil, err

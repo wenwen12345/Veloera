@@ -99,6 +99,10 @@ var GitHubClientSecret = ""
 var LinuxDOClientId = ""
 var LinuxDOClientSecret = ""
 var LinuxDOMinimumTrustLevel = 0
+// LinuxDO endpoints (configurable)
+var LinuxDOBaseURL = "https://connect.linux.do"
+var LinuxDOTokenEndpoint = ""
+var LinuxDOUserEndpoint = ""
 var IDCFlareClientId = ""
 var IDCFlareClientSecret = ""
 var IDCFlareMinimumTrustLevel = 0

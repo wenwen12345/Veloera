@@ -103,6 +103,11 @@ func LoadEnv() {
 	GeminiSafetySetting = GetEnvOrDefaultString("GEMINI_SAFETY_SETTING", "BLOCK_NONE")
 	CohereSafetySetting = GetEnvOrDefaultString("COHERE_SAFETY_SETTING", "NONE")
 
+	// LinuxDO endpoints (allow override via env)
+	LinuxDOBaseURL = GetEnvOrDefaultString("LINUXDO_BASE_URL", LinuxDOBaseURL)
+	LinuxDOTokenEndpoint = GetEnvOrDefaultString("LINUXDO_TOKEN_ENDPOINT", LinuxDOBaseURL+"/oauth2/token")
+	LinuxDOUserEndpoint = GetEnvOrDefaultString("LINUXDO_USER_ENDPOINT", LinuxDOBaseURL+"/api/user")
+
 	// Initialize rate limit variables
 	GlobalApiRateLimitEnable = GetEnvOrDefaultBool("GLOBAL_API_RATE_LIMIT_ENABLE", true)
 	GlobalApiRateLimitNum = GetEnvOrDefault("GLOBAL_API_RATE_LIMIT", 180)
