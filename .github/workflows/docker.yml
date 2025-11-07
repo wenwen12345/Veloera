@@ -28,10 +28,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Save version info
-        run: |
-          git describe --tags > VERSION
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
